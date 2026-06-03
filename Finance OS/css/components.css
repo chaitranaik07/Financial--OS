@@ -1,0 +1,249 @@
+/* =========================================
+   Glassmorphism & UI Components
+   ========================================= */
+
+/* (Keep existing base glass styles, just adding new ones below) */
+.glass-panel {
+    background: var(--bg-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
+}
+
+.glass-btn:hover { background: rgba(255, 255, 255, 0.1); }
+.glass-btn:active { transform: scale(0.96); } /* Haptic visual feel */
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover));
+    border: none;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-secondary { background: rgba(255, 255, 255, 0.1); }
+.btn-danger { background: rgba(239, 68, 68, 0.2); color: var(--danger); border-color: rgba(239, 68, 68, 0.3); }
+.btn-google { background: white; color: #333; border: none; font-weight: 600; }
+.btn-google i { color: #DB4437; }
+
+.icon-btn { padding: 10px; border-radius: 50%; width: 44px; height: 44px; }
+.text-btn { background: transparent; border: none; box-shadow: none; color: var(--accent-primary); }
+
+.glass-input, .glass-select {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 12px 16px;
+    border-radius: var(--border-radius-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    -webkit-appearance: none; /* Native look on iOS */
+}
+
+.glass-input:focus, .glass-select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.glass-select option { background: var(--bg-base); color: var(--text-primary); }
+
+.input-with-icon { position: relative; display: flex; align-items: center; }
+.input-with-icon i { position: absolute; left: 16px; color: var(--text-muted); font-style: normal; font-weight:600;}
+.input-with-icon input { padding-left: 40px; }
+
+/* Modals */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 1; transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.glass-modal {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-lg);
+    width: 90%; max-width: 500px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Scanner UI */
+.file-upload-box {
+    border: 2px dashed rgba(255,255,255,0.2);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.file-upload-box:hover { border-color: var(--accent-primary); background: rgba(255,255,255,0.02); }
+.hidden-file-input {
+    position: absolute; top:0; left:0; width:100%; height:100%; opacity:0; cursor:pointer;
+}
+
+.loader {
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--accent-primary);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Badges */
+.badge { padding: 4px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+.badge-income { background: var(--success-light); color: var(--success); }
+.badge-expense { background: var(--danger-light); color: var(--danger); }
+
+/* Tables */
+.table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.glass-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 400px;}
+.glass-table th {
+    padding: 16px; font-size: 0.85rem; text-transform: uppercase;
+    color: var(--text-muted); border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.glass-table td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.02); font-size: 0.95rem; }
+
+/* AI Badge / Cards */
+.ai-insight-badge {
+    position: relative; width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; align-items: center; justify-content: center; color: var(--accent-primary);
+}
+.ai-insights-banner {
+    display: flex; align-items: center; gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg); border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-xl); background: linear-gradient(to right, rgba(99, 102, 241, 0.1), rgba(15, 23, 42, 0.4));
+    border-left: 4px solid var(--accent-primary);
+}
+
+/* Misc Utilities */
+.text-success { color: var(--success); }
+.text-danger { color: var(--danger); }
+.text-warning { color: var(--warning); }
+.text-info { color: var(--info); }
+.text-muted { color: var(--text-muted); }
+
+.card-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+}
+.income-icon { background: var(--success-light); color: var(--success); }
+.expense-icon { background: var(--danger-light); color: var(--danger); }
+.balance-icon { background: rgba(99, 102, 241, 0.2); color: var(--accent-primary); }
+.savings-icon { background: rgba(59, 130, 246, 0.2); color: var(--info); }
+
+.empty-state { text-align: center; padding: var(--spacing-xl); color: var(--text-muted); }
+.empty-state i { font-size: 3rem; opacity: 0.5; margin-bottom: 10px; }
+.chart-wrapper { position: relative; height: 250px; width: 100%; margin-top: 10px; }
+.chart-wrapper.large { height: 350px; }
+
+.health-score-container { display: flex; flex-direction: column; align-items: center; height: 250px; justify-content: center;}
+.score-circle {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: conic-gradient(var(--success) 0%, var(--success) 80%, rgba(255, 255, 255, 0.1) 80%);
+    display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 700;
+}
+.score-circle::before { content: ''; position: absolute; width: 100px; height: 100px; border-radius: 50%; background: var(--bg-surface); }
+.score-circle span { position: relative; z-index: 1; }
+
+.modal-form { display: flex; flex-direction: column; gap: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.9rem; color: var(--text-secondary); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+.type-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.radio-card { position: relative; cursor: pointer; }
+.radio-card input { position: absolute; opacity: 0; }
+.radio-card .card-content {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; border-radius: var(--border-radius-md); background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 500;
+}
+.radio-card input:checked + .card-content { background: rgba(99, 102, 241, 0.2); border-color: var(--accent-primary); color: white; }
+
+/* AI Chat Panel */
+.chat-panel-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.5); z-index: 1050; opacity: 1; transition: opacity 0.3s;
+}
+.chat-panel-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.chat-panel {
+    position: fixed; top: 0; right: -100%; width: 400px; max-width: 100vw; height: 100vh;
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+    backdrop-filter: blur(25px); z-index: 1100;
+    display: flex; flex-direction: column; transition: right 0.3s ease;
+    border-left: 1px solid rgba(255,255,255,0.1);
+}
+.chat-panel.open { right: 0; }
+
+.chat-header {
+    padding: var(--spacing-lg); border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.2);
+}
+
+.chat-messages {
+    flex: 1; overflow-y: auto; padding: var(--spacing-lg);
+    display: flex; flex-direction: column; gap: var(--spacing-md);
+}
+
+.chat-bubble {
+    max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 0.95rem; line-height: 1.4;
+    animation: popIn 0.3s ease-out;
+}
+.bot-bubble {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    align-self: flex-start; border-top-left-radius: 4px;
+}
+.user-bubble {
+    background: var(--accent-primary); color: white;
+    align-self: flex-end; border-top-right-radius: 4px;
+}
+
+.chat-input-area {
+    padding: var(--spacing-md); border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.2);
+}
